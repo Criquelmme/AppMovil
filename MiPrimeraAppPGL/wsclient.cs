@@ -11,10 +11,19 @@ namespace MiPrimeraAppPGL
 {
     class wsclient : MainPage
     {
-        public async Task<T> Get<T>(string url)
+        public string url { get; set; }
+
+        public async Task<T> Get<T>()
         {
             HttpClient client = new HttpClient();
             var response = await client.GetAsync(url);
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(json);
+        }
+        public async Task<T> post<T>(StringContent data)
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.PostAsync(url, data);
             var json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(json);
         }

@@ -16,20 +16,25 @@ namespace MiPrimeraAppPGL
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        wsclient client;
+
         public MainPage()
         {
             InitializeComponent();
+             
             Inicializar();
         }
-
+       
         private void Inicializar()
         {
             btntexto.Clicked += Btntexto_Clicked;
-            btnotrapagina.Clicked += Btnotrapagina_Clicked;
-           
+            btntexto2.Clicked += Btnotrapagina_Clicked;
+            client = new wsclient();
+            client.url = "http://appmovilgeo.azurewebsites.net/";
+
         }
 
-  
+
         private void Btnotrapagina_Clicked(object sender, EventArgs e)
         {
             //otra pagina
@@ -38,19 +43,43 @@ namespace MiPrimeraAppPGL
 
         private async void Btntexto_Clicked(object sender, EventArgs e)
         {
-          
 
-            wsclient client = new wsclient();
-            var result = await client.Get<webservice>("http://test.productosecoplas.cl/");
-            if (result != null)
-            lblTitle.Text = $"{result.id}";
-            lblId.Text = result.usuario;
-            lblBody.Text = result.contrasena;
+
+            string Usuario = txtUsuario.Text;
+            string password = txtPass.Text;
+            var person = new Person();
+            person.Name = Usuario;
+            person.pass = password;
+
+            if (Usuario != null && password != null)
             {
+                var json = JsonConvert.SerializeObject(person);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var login = await client.post<webservice>(data);
+
+
+                if (login != null) { 
+                
+                
+                }
+               
+                
             }
         }
 
 
 
+    }
+
+    class Person
+    {
+        public string Name { get; set; }
+        public string pass { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}: {pass}";
+        }
     }
 }
