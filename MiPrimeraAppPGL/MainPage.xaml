@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MiPrimeraAppPGL.MainPage"
+             Title="pagina Principal">
+
+    <StackLayout Orientation="Vertical">
+        <!-- Place new controls here -->
+        <Label x:Name="lbltexto"
+               Text="Welcome to Xamarin.Forms!" 
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+            />
+        <Entry x:Name="txtUsuario"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           Placeholder="Usuario"
+           WidthRequest="100">
+        </Entry>
+        
+        <Entry x:Name="txtPass"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           Placeholder="Password"
+           WidthRequest="100">
+        </Entry>
+
+        <Button x:Name="btntexto"
+                Text="CLick Aqui"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+        </Button>
+
+        <Button x:Name="btntexto2"
+                Text="CLick Aqui 2"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+        </Button>
+
+        <Button x:Name="btnotrapagina"
+                Text="Otra Pagina"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+        </Button>
+
+        <Label x:Name="lblId"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand">
+
+        </Label>
+        <Label x:Name="lblBody"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand">
+
+        </Label>
+        <Label x:Name="lblTitle"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand">
+        </Label>
+
+    </StackLayout>
+
+</ContentPage>
