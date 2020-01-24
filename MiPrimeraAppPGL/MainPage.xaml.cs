@@ -26,14 +26,10 @@ namespace MiPrimeraAppPGL
         {
             btntexto.Clicked += Btntexto_Clicked;
             btnotrapagina.Clicked += Btnotrapagina_Clicked;
-            btntexto2.Clicked += Btntexto2_Clicked;
+           
         }
 
-        private void Btntexto2_Clicked(object sender, EventArgs e)
-        {
-            metodo2();
-        }
-
+  
         private void Btnotrapagina_Clicked(object sender, EventArgs e)
         {
             //otra pagina
@@ -54,32 +50,6 @@ namespace MiPrimeraAppPGL
             }
         }
 
-        private async void metodo2()
-        {
-
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("http://test.productosecoplas.cl/");
-
-            string jsonData = @"{""first_name"" : ""Sashell"", ""last_name"" : ""hijo de haskell"",  ""phone"" : ""555-555-555"",  ""email"" : ""blancavergas@gmail.com"", ""address"" : ""revolucion 205"", ""city"" : ""mexico"", ""state"" : ""MX""}";
-
-            try
-            {
-                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PostAsync("", content);
-
-                // this result string should be something like: "{"token":"rgh2ghgdsfds"}"
-                var result = await response.Content.ReadAsStringAsync();
-
-            }
-            catch (Exception er)
-            {
-                var lb = er.ToString();
-                var js = "xs";
-            }
-
-
-
-        }
 
 
     }
