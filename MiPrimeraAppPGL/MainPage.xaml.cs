@@ -29,8 +29,7 @@ namespace MiPrimeraAppPGL
         {
             btntexto.Clicked += Btntexto_Clicked;
             btntexto2.Clicked += Btnotrapagina_Clicked;
-            client = new wsclient();
-            client.url = "http://appmovilgeo.azurewebsites.net/";
+           
 
         }
 
@@ -43,8 +42,8 @@ namespace MiPrimeraAppPGL
 
         private async void Btntexto_Clicked(object sender, EventArgs e)
         {
-
-
+            client = new wsclient();
+            client.url = "http://appmovilgeo.azurewebsites.net/";
             string Usuario = txtUsuario.Text;
             string password = txtPass.Text;
             var person = new Person();
@@ -56,8 +55,9 @@ namespace MiPrimeraAppPGL
                 var json = JsonConvert.SerializeObject(person);
                 var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var login = await client.post<webservice>(data);
-
+                var login = await client.Post<webservice>(data);
+                
+                Console.WriteLine(login);
 
                 if (login != null) { 
                 

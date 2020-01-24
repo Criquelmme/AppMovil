@@ -20,12 +20,16 @@ namespace MiPrimeraAppPGL
             var json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(json);
         }
-        public async Task<T> post<T>(StringContent data)
+        public async Task<T> Post<T>(HttpContent data)
         {
             HttpClient client = new HttpClient();
-            var response = await client.PostAsync(url, data);
-            var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(json);
+            client.BaseAddress = new Uri(url);
+
+            var response =client.PostAsync("login", data).Result;
+
+            string result = response.Content.ReadAsStringAsync().Result;
+         
+            return JsonConvert.DeserializeObject<T>(result);
         }
 
 
