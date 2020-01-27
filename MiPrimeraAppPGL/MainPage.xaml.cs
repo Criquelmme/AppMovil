@@ -46,16 +46,13 @@ namespace MiPrimeraAppPGL
             client.url = "http://appmovilgeo.azurewebsites.net/";
             string Usuario = txtUsuario.Text;
             string password = txtPass.Text;
-            var person = new Person();
-            person.Name = Usuario;
-            person.pass = password;
+        
 
             if (Usuario != null && password != null)
             {
-                var json = JsonConvert.SerializeObject(person);
-                var data = new StringContent(json, Encoding.UTF8, "application/json");
+                       
 
-                var login = await client.Post<webservice>(data);
+                var login = await client.Post<webservice>(Usuario, password);
                 
                 Console.WriteLine(login);
 
@@ -72,14 +69,4 @@ namespace MiPrimeraAppPGL
 
     }
 
-    class Person
-    {
-        public string Name { get; set; }
-        public string pass { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Name}: {pass}";
-        }
-    }
 }
